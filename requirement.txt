@@ -1,0 +1,5 @@
+streamlit
+PyPDF2
+openai
+python-dotenv
+# Note: OpenRouter uses the same 'openai' SDK, just with a different base_url + API key
