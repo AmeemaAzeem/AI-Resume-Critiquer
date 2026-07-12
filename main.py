@@ -281,12 +281,7 @@ with st.sidebar:
         help="All options are free OpenRouter models. If one is rate-limited, the app automatically falls back to the next.",
     )
 
-    manual_key = st.text_input(
-        "OpenRouter API key (optional override)",
-        type="password",
-        help="Only needed if you haven't set OPENROUTER_API_KEY in a .env file.",
-        placeholder="sk-or-...",
-    )
+  
 
     st.markdown("---")
     st.markdown("## 💡 Tips for a strong resume")
@@ -305,7 +300,10 @@ with st.sidebar:
 # ----------------------------------------------------------------------
 # API KEY
 # ----------------------------------------------------------------------
-OPENROUTER_API_KEY = manual_key.strip() if manual_key else os.getenv("OPENROUTER_API_KEY")
+OPENROUTER_API_KEY = (
+    st.secrets.get("OPENROUTER_API_KEY")
+    or os.getenv("OPENROUTER_API_KEY")
+)
 
 if not OPENROUTER_API_KEY:
     st.warning(
@@ -413,9 +411,10 @@ def call_openrouter(api_key, models, prompt):
                 temperature=0.6,
                 max_tokens=1400,
                 extra_headers={
-                    "HTTP-Referer": "https://streamlit.io",
-                    "X-Title": "AI Resume Critiquer",
-                },
+    "HTTP-Referer": "https://ai-resume-critiquer-6hthz2gcpmjwigotxsbojv.streamlit.app",
+    "X-OpenRouter-Title": "AI Resume Critiquer",
+},
+            )
             )
             content = response.choices[0].message.content
             if content and content.strip():
