@@ -31,6 +31,8 @@ The application is designed to provide practical suggestions that can help impro
 
 ## How It Works
 
+Deployed here:
+https://ai-resume-critiquer-6hthz2gcpmjwigotxsbojv.streamlit.app/
 1. Upload a resume in PDF or TXT format.
 2. Optionally enter the job role you are targeting.
 3. The application extracts the resume text.
