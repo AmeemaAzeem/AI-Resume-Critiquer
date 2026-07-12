@@ -414,7 +414,7 @@ def call_openrouter(api_key, models, prompt):
     "HTTP-Referer": "https://ai-resume-critiquer-6hthz2gcpmjwigotxsbojv.streamlit.app",
     "X-OpenRouter-Title": "AI Resume Critiquer",
 },
-            )
+            
             )
             content = response.choices[0].message.content
             if content and content.strip():
